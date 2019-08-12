@@ -1,6 +1,6 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const express = require('./node_modules/express');
+const bodyParser = require('./node_modules/body-parser');
+const cors = require('./node_modules/cors/lib');
 
 const { DB } = require('./DBConnection.js');
 var userController = require('./controllers/userController.js');
@@ -13,4 +13,5 @@ app.use(cors({origin : 'http://localhost:4200'}));
 
 app.listen(3000, () => console.log('Server started at port : 3000'));
 app.use('/user',userController);
+//app.use('/coach',userController);
  

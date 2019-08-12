@@ -1,6 +1,6 @@
 const DB = require('mongoose');
 
-DB.connect('mongodb://localhost:27017/Crud', (err) => {
+DB.connect('mongodb://localhost:27017/SculpTest', (err) => {
     if (!err)
         console.log('MongoDB connection succeeded.');
     else
@@ -8,3 +8,4 @@ DB.connect('mongodb://localhost:27017/Crud', (err) => {
 });
 
 module.exports = DB.connection;
+
