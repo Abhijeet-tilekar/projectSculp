@@ -2,7 +2,7 @@ exports.db_log = function () {
         var MongoClient = require('mongodb').MongoClient;
         var url = "mongodb://localhost:27017/SculpTest";
 
-        const _from = require('./app.js');
+        const _from = require('./app.js.js');
         let _email = _from.sendEmail();
         let _otp = _from.sendOtp();
         var datetime = new Date();
