@@ -80,9 +80,6 @@ module.exports.updateUser = (req, res, next)=> {
             res.status(200).send("OK")
         }
     });
-    
-    
-    
-    
-   
+
 }
+
