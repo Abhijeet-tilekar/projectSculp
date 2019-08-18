@@ -17,6 +17,14 @@ import { LandingPageComponent } from './user/landing-page/landing-page.component
 import { UserService } from './shared/user.service';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { MyPlanComponent } from './user/my-plan/my-plan.component';
+import { GoalListComponent } from './goal-list/goal-list.component';
+import { GoalWLComponent } from './goal-wl/goal-wl.component';
+import { GoalNComponent } from './goal-n/goal-n.component';
+import { GoalSTComponent } from './goal-st/goal-st.component';
+import { ScrollingModule } from '@angular/cdk/scrolling'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -26,14 +34,21 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     UserProfileComponent,
     SignInComponent,
     LandingPageComponent,
+    MyPlanComponent,
+    GoalListComponent,
+    GoalWLComponent,
+    GoalNComponent,
+    GoalSTComponent,
    
   ],
   imports: [
+    ScrollingModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

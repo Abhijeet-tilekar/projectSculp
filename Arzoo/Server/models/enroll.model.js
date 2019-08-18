@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 
 var enrollSchema = new mongoose.Schema({
-    UserId: String,
+    User: String,
     StartDate: Date,
     EndDate: Date,
-    CoachId: String,
-    PlanId: String
+    Coach: String,
+    Plan: String
 })
 mongoose.model('Enroll', enrollSchema, "Enroll");
