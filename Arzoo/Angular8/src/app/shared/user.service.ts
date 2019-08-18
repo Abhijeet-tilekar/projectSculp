@@ -65,8 +65,8 @@ export class UserService {
     else
       return false;
   }
-  OTPverify(email){
-    return this.http.post(environment.apiBaseUrl + '/OTP',{Email:email.toString()},this.noAuthHeader);
+  OTPverify(email,mobile){
+    return this.http.post(environment.apiBaseUrl + '/OTP',{Email:email.toString(), Mobile : mobile.toString()},this.noAuthHeader);
   }
 
   updateUser(user: User){
@@ -79,5 +79,10 @@ export class UserService {
   Plans(goal){
     return this.http.get(environment.apiBaseUrl + '/plan/' + goal);
   }
+
+  update() {
+    return this.http.get(environment.apiBaseUrl + '/update');
+  }
+
 }
 

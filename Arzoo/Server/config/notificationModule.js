@@ -20,10 +20,7 @@ const nodemailer = require('nodemailer');
      return (str);
  }
 
- function sendText(mob, message) {
-
-     const number = mob;
-     const text = message;//'test message OTP =>' + otp;
+ function sendText(number, text) {
 
      nexmo.message.sendSms(
          '919421785433', number, text, { type: 'unicode' },
@@ -101,4 +98,4 @@ function verifySMSOTP(mob){
 }
 
 
-module.exports = {verifyMailOTP, verifySMSOTP}
+module.exports = {verifyMailOTP, verifySMSOTP,sendText,sendMail}

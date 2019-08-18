@@ -12,5 +12,6 @@ router.post('/OTP', ctrlUser.OTP);
 router.post('/update', jwtHelper.verifyJwtToken, ctrlUser.updateUser);
 router.get('/plan/:goal', ctrlPlan.Plan);
 router.get('/myPlan', jwtHelper.verifyJwtToken, ctrlUser.myPlan);
+router.get('/update', jwtHelper.verifyJwtToken, ctrlUser.update);
 
 module.exports = router;
