@@ -92,7 +92,7 @@ function verifyMailOTP(email){
 
 function verifySMSOTP(mob){
     let otp = genotp(4);
-    sendText(mob, "Your One Time Password for SMS verification is : " + otp);
+    sendText(mob, "SMS OTP is : " + otp);
     console.log("SMS OTP "+otp);
     return otp;
 }
