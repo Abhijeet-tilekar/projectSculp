@@ -13,5 +13,6 @@ router.post('/update', jwtHelper.verifyJwtToken, ctrlUser.updateUser);
 router.get('/plan/:goal', ctrlPlan.Plan);
 router.get('/myPlan', jwtHelper.verifyJwtToken, ctrlUser.myPlan);
 router.get('/update', jwtHelper.verifyJwtToken, ctrlUser.update);
+router.post('/test',ctrlUser.Test);
 
 module.exports = router;

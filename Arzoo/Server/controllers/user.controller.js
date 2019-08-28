@@ -32,11 +32,11 @@ module.exports.register = (req, res, next) => {
     console.log('inside');
 }
 module.exports.authenticate = (req, res, next) => {
-console.log(JSON.stringify(req.query),"Body",JSON.stringify(req.body))
+//console.log(JSON.stringify(req.query),"Body",JSON.stringify(req.body))
     // call for passport authentication
     passport.authenticate('local', (err, User, info) => {
         // error from passport middleware
-        console.log(JSON.stringify(User), " D", JSON.stringify(info));
+        //console.log(JSON.stringify(User), " D", JSON.stringify(info));
         if (err) return res.status(400).json(err);
         // registered user
         else if (User) return res.status(200).json({
@@ -198,4 +198,9 @@ module.exports.update = (req, res, next) => {
         res.status(200).send("OK");
     })
 
+}
+
+module.exports.Test = (req,res,next) => {
+    //console.log(JSON.parse(req.query))
+    res.status(200).json(req.body);
 }
