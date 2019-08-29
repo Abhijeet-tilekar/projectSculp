@@ -12,11 +12,11 @@ var userSchema = new mongoose.Schema({
         required: 'last name can\'t be empty'
     },
     CountryCode: {
-        type: String,
+        type: Number,
         required: 'coyntrycode name can\'t be empty'
     },
     MobileNo: {
-        type: String,
+        type: Number,
         required: 'mobile name can\'t be empty'
     },
     Email: {
@@ -58,7 +58,7 @@ userSchema.pre('save', function(next) {
 });
 
 userSchema.methods.verifyPassword = function(password) {
-    return (password == this.Password) ? true : false; 
+    return (password == this.Password) ? true : false;
     //return bcrypt.compareSync(password, this.Password); // to check encrypted pass only if pass stored is encrypted
 };
 
