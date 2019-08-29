@@ -26,13 +26,13 @@ const nodemailer = require('nodemailer');
          '919421785433', number, text, { type: 'unicode' },
          (err, responseData) => {
              if (err) {
-                 console.log(err);
+                 //console.log(err);
              } else {
                  const { messages } = responseData;
                  const {
                      ['message-id']: id, ['to']: number, ['error-text']: error
                  } = messages[0];
-                 console.dir(responseData);
+                 //console.dir(responseData);
                  // Get data from response
                  const data = {
                      id,
@@ -73,9 +73,9 @@ const nodemailer = require('nodemailer');
 
      transporter.sendMail(mailOption, function(err, res) {
          if (err) {
-             console.log("Error Occurred: " + err);
+            //  console.log("Error Occurred: " + err);
          } else {
-             console.log('Mail sent Successfully!' + otp + " -- " + email);
+            //  console.log('Mail sent Successfully!' + otp + " -- " + email);
          }
      });
 
@@ -86,14 +86,14 @@ const nodemailer = require('nodemailer');
 function verifyMailOTP(email){
     let otp = genotp(4);
     sendMail(email,"Email Verification","Your One Time Password for E-mail verification is : " + otp);
-    console.log("Mail OTP "+otp);
+    // console.log("Mail OTP "+otp);
     return otp;
 }
 
 function verifySMSOTP(mob){
     let otp = genotp(4);
     sendText(mob, "SMS OTP is : " + otp);
-    console.log("SMS OTP "+otp);
+    // console.log("SMS OTP "+otp);
     return otp;
 }
 

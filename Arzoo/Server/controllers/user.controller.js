@@ -30,7 +30,7 @@ module.exports.register = (req, res, next) => {
         }
 
     });
-    console.log('inside');
+    //console.log('inside');
 }
 module.exports.authenticate = (req, res, next) => {
 //console.log(JSON.stringify(req.query),"Body",JSON.stringify(req.body))

@@ -12,11 +12,11 @@ var userSchema = new mongoose.Schema({
         required: 'last name can\'t be empty'
     },
     CountryCode: {
-        type: Number,
+        type: String,
         required: 'coyntrycode name can\'t be empty'
     },
     MobileNo: {
-        type: Number,
+        type: String,
         required: 'mobile name can\'t be empty'
     },
     Email: {
