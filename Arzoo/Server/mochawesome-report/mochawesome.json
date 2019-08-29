@@ -1,0 +1,233 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 7,
+    "passes": 7,
+    "pending": 0,
+    "failures": 0,
+    "start": "2019-08-29T09:47:54.846Z",
+    "end": "2019-08-29T09:47:57.093Z",
+    "duration": 2247,
+    "testsRegistered": 7,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "72d02684-dd4e-4d29-aff0-a8e7b9a337f3",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "70f3fba4-c923-416d-9e25-fd511118ba46",
+          "title": "Login API Tests : ",
+          "fullFile": "D:\\projectSculp_Working_\\Arzoo\\Server\\test\\apiTests.js",
+          "file": "\\test\\apiTests.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should be able Login with Correct Credentials ",
+              "fullTitle": "Login API Tests :  Should be able Login with Correct Credentials ",
+              "timedOut": false,
+              "duration": 2111,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let user = {\n    MobileNo: '9657663844',\n    password: '12345'\n}\nchai.request(server)\n    .post('/api/authenticate')\n    .send(user)\n    .end((req, res) => {\n        //console.log(res.body)\n        expect(res).to.have.status(200);\n        expect(res.body).is.a('Object');\n        done();\n    })",
+              "err": {},
+              "uuid": "68ee255c-60a5-45c4-9c53-02b1a96d0396",
+              "parentUUID": "70f3fba4-c923-416d-9e25-fd511118ba46",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should return generated token after sucessful login",
+              "fullTitle": "Login API Tests :  Should return generated token after sucessful login",
+              "timedOut": false,
+              "duration": 15,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let user = {\n    MobileNo: '9657663844',\n    password: '12345'\n}\nchai.request(server)\n    .post('/api/authenticate')\n    .send(user)\n    .end((req, res) => {\n        //console.log(res.body)\n        expect(res).to.have.status(200);\n        expect(res.body).is.a('Object');\n        (res.body).should.include.keys('token');\n        expect(res.body['token']).length.greaterThan(0);\n        done();\n    })",
+              "err": {},
+              "uuid": "eb4a3bd6-8908-413a-93e0-c68dbc9cd21f",
+              "parentUUID": "70f3fba4-c923-416d-9e25-fd511118ba46",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should Not Login with incorrect Credentials ",
+              "fullTitle": "Login API Tests :  Should Not Login with incorrect Credentials ",
+              "timedOut": false,
+              "duration": 8,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let user = {\n    MobileNo: '432423',\n    password: '1234324324578'\n}\nchai.request(server)\n    .post('/api/authenticate')\n    .send(user)\n    .end((req, res) => {\n        //console.log(res.body);\n        expect(res).to.have.status(404);\n        done();\n    })",
+              "err": {},
+              "uuid": "478c6796-6e4c-4c92-8cc1-04103872212a",
+              "parentUUID": "70f3fba4-c923-416d-9e25-fd511118ba46",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should send error message if wrong password ",
+              "fullTitle": "Login API Tests :  Should send error message if wrong password ",
+              "timedOut": false,
+              "duration": 7,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let user = {\n    MobileNo: '9657663844',\n    password: '1234578'\n}\nchai.request(server)\n    .post('/api/authenticate')\n    .send(user)\n    .end((req, res) => {\n        expect(res).to.have.status(404);\n        (res.body).should.be.a('Object');\n        (res.body).should.include.keys('message');\n        expect(res.body['message']).length.greaterThan(0);\n        (res.body['message']).should.contain('Wrong password');\n        done();\n    })",
+              "err": {},
+              "uuid": "b0cd77f3-12d1-4e66-a54d-496fa21e8c91",
+              "parentUUID": "70f3fba4-c923-416d-9e25-fd511118ba46",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should not be able to login with unregistered mobile no",
+              "fullTitle": "Login API Tests :  Should not be able to login with unregistered mobile no",
+              "timedOut": false,
+              "duration": 7,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let user = {\n    MobileNo: '9657232663844',\n    password: '2323'\n}\nchai.request(server)\n    .post('/api/authenticate')\n    .send(user)\n    .end((req, res) => {\n        expect(res).to.have.status(404);\n        (res.body).should.be.a('Object');\n        (res.body).should.include.keys('message');\n        expect(res.body['message']).length.greaterThan(0);\n        (res.body['message']).should.contain('Mobile is not registered');\n        done();\n    })",
+              "err": {},
+              "uuid": "b7b5bc91-047b-455d-aa4d-fb4666dbf96d",
+              "parentUUID": "70f3fba4-c923-416d-9e25-fd511118ba46",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "68ee255c-60a5-45c4-9c53-02b1a96d0396",
+            "eb4a3bd6-8908-413a-93e0-c68dbc9cd21f",
+            "478c6796-6e4c-4c92-8cc1-04103872212a",
+            "b0cd77f3-12d1-4e66-a54d-496fa21e8c91",
+            "b7b5bc91-047b-455d-aa4d-fb4666dbf96d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2148,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2500
+        },
+        {
+          "uuid": "fc34eddc-6eed-4ac1-a7d4-7adbe183a030",
+          "title": "User Profile : ",
+          "fullFile": "D:\\projectSculp_Working_\\Arzoo\\Server\\test\\apiTests.js",
+          "file": "\\test\\apiTests.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should return all details for user",
+              "fullTitle": "User Profile :  Should return all details for user",
+              "timedOut": false,
+              "duration": 23,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let user = {\n    MobileNo: '9657663844',\n    password: '12345'\n}\nchai.request(server)\n    .post('/api/authenticate')\n    .send(user)\n    .end((req, res) => {\n        let token = res.body.token\n        chai.request(server)\n            .get('/api/userProfile')\n            .set('Authorization', 'Bearer ' + token)\n            .end((err, res) => {\n                //console.log(res.body);\n                (res.body).should.have.status(true);\n                (res.body.user).should.have.property('FirstName');\n                (res.body.user).should.have.property('LastName');\n                (res.body.user).should.have.property('MobileNo');\n                (res.body.user).should.have.property('Email');\n                (res.body.user).should.have.property('CountryCode');\n                (res.body.user).should.have.property('Password');\n                (res.body.user).should.have.property('ConfirmPassword');\n                done();\n            })\n    })",
+              "err": {},
+              "uuid": "0e893f73-3fdb-4ae1-bac2-1fbc7bdb896e",
+              "parentUUID": "fc34eddc-6eed-4ac1-a7d4-7adbe183a030",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should return details of correct User",
+              "fullTitle": "User Profile :  Should return details of correct User",
+              "timedOut": false,
+              "duration": 15,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let user = {\n    MobileNo: '9657663844',\n    password: '12345'\n}\nchai.request(server)\n    .post('/api/authenticate')\n    .send(user)\n    .end((req, res) => {\n        let token = res.body.token\n        chai.request(server)\n            .get('/api/userProfile')\n            .set('Authorization', 'Bearer ' + token)\n            .end((err, res) => {\n                expect(res.body.user.MobileNo).equal(user.MobileNo);\n                expect(res.body.user.Password).equal(user.password);\n                done();\n            })\n    })",
+              "err": {},
+              "uuid": "e51c9787-9b99-4535-be94-83f4993b7f46",
+              "parentUUID": "fc34eddc-6eed-4ac1-a7d4-7adbe183a030",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0e893f73-3fdb-4ae1-bac2-1fbc7bdb896e",
+            "e51c9787-9b99-4535-be94-83f4993b7f46"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 38,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2500
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "6.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false
+      },
+      "version": "4.1.0"
+    },
+    "marge": {
+      "options": null,
+      "version": "4.0.1"
+    }
+  }
+}

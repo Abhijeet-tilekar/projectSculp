@@ -16,10 +16,11 @@ module.exports.register = (req, res, next) => {
     user.Password = req.body.Password;
     user.ConfirmPassword = req.body.ConfirmPassword;
     user.UserType = req.body.UserType;
-    console.log(JSON.stringify(req.body));
+    //console.log(JSON.stringify(req.body));
     user.save((err, doc) => {
         if (!err)
             res.status(200).send(doc);
+            
         else {
             if (err.code == 11000) {
                 console.log('Duplicate email adrress found.');
@@ -39,15 +40,17 @@ module.exports.authenticate = (req, res, next) => {
         //console.log(JSON.stringify(User), " D", JSON.stringify(info));
         if (err) return res.status(400).json(err);
         // registered user
-        else if (User) return res.status(200).json({
+        else if (User) {
+            return res.status(200).json({
             "token": User.generateJwt()
-        });
+        });}
         // unknown user or wrong password
         else return res.status(404).json(info);
     })(req, res);
 }
 
 module.exports.userProfile = (req, res, next) => {
+    //console.log(req.body,req.query);
     User.findOne({
             _id: req._id
         },
@@ -88,7 +91,7 @@ module.exports.updateUser = (req, res, next) => {
 }
 
 module.exports.myPlan = (req, res, next) => {
-    console.log(JSON.stringify(req.body),JSON.stringify(req._id))
+    //console.log(JSON.stringify(req.body),JSON.stringify(req._id))
     Enroll.aggregate([{
                 $match: {
                     User: mongoose.Types.ObjectId(req._id)
@@ -145,7 +148,7 @@ module.exports.myPlan = (req, res, next) => {
             if (err) {
                 console.log(err)
             }
-            console.log(JSON.stringify(data));
+           // console.log(JSON.stringify(data));
             res.status(200).send(data)
         });
 }
